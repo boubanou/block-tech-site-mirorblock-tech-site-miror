@@ -1658,4 +1658,30 @@ var wpcf7_utils_url = "https:\/\/block-tech.co\/wp-content\/plugins\/internation
 <script src="./Block-tech.co_files/script(1).min.js" id="wpcf7-intl-tel-js-js"></script>
 	
 
+<script>(function(){
+  var TARGET="/Our%20Solution%20%E2%80%93%20Blocktech";
+  function fix(){
+    var links=[].slice.call(document.querySelectorAll("a[href]"));
+    links.forEach(function(a){
+      var txt=(a.textContent||"").trim().toLowerCase();
+      var href=a.getAttribute("href")||"";
+      if (txt==="our solution" || /our[-_ ]solution/i.test(href)) {
+        a.setAttribute("href", TARGET);
+        a.removeAttribute("onclick");
+        a.addEventListener("click", function(e){ e.stopPropagation(); }, true);
+      }
+    });
+    // Intercepte toute tentative de redirect JS → our-solution
+    var origPushState=history.pushState; history.pushState=function(){ return origPushState.apply(this, arguments); };
+    var origReplaceState=history.replaceState; history.replaceState=function(){ return origReplaceState.apply(this, arguments); };
+    var redirected=false;
+    var origAssign=window.location.assign; window.location.assign=function(u){ if(/our[-_]solution/i.test(u||"")){ redirected=true; return (window.location.href=TARGET); } return origAssign.call(window.location,u); };
+    var origSet=Object.getOwnPropertyDescriptor(Location.prototype, "href").set;
+    Object.defineProperty(window.location, "href", {
+      set: function(v){ if(/our[-_]solution/i.test(v||"")){ redirected=true; return (window.location.assign(TARGET)); } return origSet.call(window.location, v); }
+    });
+  }
+  document.addEventListener("DOMContentLoaded", fix);
+  setTimeout(fix, 500); setTimeout(fix, 1500);
+})();</script>
 <button id="wpfront-scroll-top-container" aria-label="" title=""><img src="./Block-tech.co_files/scroll-1-min.png" alt="scroll" title=""></button><div class="calendly-lifecycle-optibutton_singleton"><template shadowrootmode="closed"><div class="calendly-opti-root"></div></template></div><div class="calendly-frame-tag" manager_id="9bc98171-b8b4-442c-87d5-fc8c29b38199" id="9bc98171-b8b4-442c-87d5-fc8c29b38199" style="height: 0px; width: 0px; visibility: hidden;"></div></body></html>
