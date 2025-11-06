@@ -1,0 +1,8 @@
+{
+  "cleanUrls": true,
+  "trailingSlash": false,
+  "redirects": [
+    { "source": "/our-solution",  "destination": "/Our%20Solution%20%E2%80%93%20Blocktech", "permanent": false },
+    { "source": "/our-solution/", "destination": "/Our%20Solution%20%E2%80%93%20Blocktech", "permanent": false }
+  ]
+}
